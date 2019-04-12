@@ -48,6 +48,7 @@ void spu_recompiler::init()
 
 bool spu_recompiler::compile(u64 last_reset_count, const std::vector<u32>& func)
 {
+#pragma loop(hint_parallel(6))
 	const auto fn_location = m_spurt->find(last_reset_count, func);
 
 	if (fn_location == spu_runtime::g_dispatcher)
